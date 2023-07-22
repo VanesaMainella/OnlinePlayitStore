@@ -50,20 +50,20 @@ export const styles = StyleSheet.create({
     productContainer:{
         backgroundColor: COLORS.background,
         borderRadius:10,
-        Width:'45%',
+        width:'45%',
         marginHorizontal:5,
         
     },
 
     productsContent: {
-        gap:15,
+        gap:10,
         paddingVertical:25,
         
     },
 
     productImage:{
-        Width:'100%',
-        height:130,
+        Width:'90%',
+        height:140,
     },
 
     productDetail:{

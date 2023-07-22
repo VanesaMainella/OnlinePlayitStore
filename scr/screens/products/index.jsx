@@ -58,17 +58,17 @@ function Product ({onHandleGoBack, categorySelected}) {
       style= {styles.products}
       data= {search.length > 0 ? filteredProduct : filteredProductsByCategory}
       renderItem={({item}) => (
-      <View style={styles.productContainer}>
-       <ImageBackground source = {{uri: item.image}} style={[styles.productImage, {backgroundColor: categorySelected.color}]}/>
+      <TouchableOpacity onPress={()=> null} style={styles.productContainer}>
+       <ImageBackground source = {{uri: item.image}} style={[styles.productImage, {backgroundColor: categorySelected.color}]}
+       resizeMethod='resize'
+       resizeMode= "contain"
+       />
       <View style={styles.productDetail}> 
-            <Text> style= {styles.productName} 
-            numberofLines:{1}
-            ellipsizeMode= "tail"
-            {item.name} </Text>
-            <Text> style= {styles.productPrice}{`${item.currency.code}${item.price}`} </Text>
+            <Text style= {styles.productName} numberOfLines={1} ellipsizeMode= "tail"> {item.name} </Text>
+            <Text style= {styles.productPrice}> {`${item.currency.code} ${item.price}`} </Text>
      </View>
 
-      </View>
+      </TouchableOpacity>
       )}
       contentContainerStyle={styles.productsContent}
       keyExtractor={(item)=> item.id.toString()}
