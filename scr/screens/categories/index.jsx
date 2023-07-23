@@ -1,11 +1,11 @@
-import { FlatList, SafeAreaView, View, Text} from 'react-native';
+import { FlatList, SafeAreaView, View, Text } from 'react-native';
 import { styles } from './styles';
 import { CategoryItem } from '../../components';
 import CATEGORIES from '../../constants/data/categories.json';
 import { beginEvent } from 'react-native/Libraries/Performance/Systrace';
 
 function Categories({onSelectCategory}) {
-  
+
   return (
     <SafeAreaView style={styles.container}>
     <View style={styles.container}>
