@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
     },
 
     productImage:{
-        width:'90%',
+        width:'100%',
         height:140,
     },
 

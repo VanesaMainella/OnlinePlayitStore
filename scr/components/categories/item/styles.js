@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({  //// creo el objeto
 
     categoryName:{
       fontSize:20,
-      fontWeight: 'bold',
+      fontFamily:'Inter-Bold',
       color: COLORS.text,
       padding:20, /// separar elementos
       textShadowColor:'rgba(0, 0, 0, 0.75)',

@@ -13,15 +13,15 @@ export const styles=StyleSheet.create({
 	      width: 0,
 	      height: 2,
          },
-shadowOpacity: 0.25,
-shadowRadius: 3.84,
+         shadowOpacity: 0.25,
+         shadowRadius: 3.84,
+         elevation: 5,
+         },
 
-elevation: 5,
-    },
     title: {
         fontSize:25,
         color: COLORS.text,
-        fontWeight:'bold', /// letra en negrita
+        fontFamily: 'Inter-Bold',
 
     }
 });

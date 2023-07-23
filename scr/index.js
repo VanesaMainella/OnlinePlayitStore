@@ -3,16 +3,17 @@ import { SafeAreaView, StyleSheet, View, Text, Button, ActivityIndicator} from '
 import { Header } from './components';
 import {Categories, Products} from './screens';
 import { useState } from 'react';
-import { COLORS } from './themes';
+import { FONTS, COLORS } from './themes';
 import { useFonts } from 'expo-font';
+
 
 export default function App(){
   
   const [loaded] = useFonts({
-    'Inter-Regular' : require ('../assets/fonts/Inter-Regular.ttf'),
-    'Inter-Bold' : require ('../assets/fonts/Inter-Bold.ttf'),
-    'Inter-Medium' : require ('../assets/fonts/Inter-Medium.ttf'),
-    'Inter-Light' : require ('../assets/fonts/Inter-Light.ttf'),
+    [FONTS.regular]: require ('../assets/fonts/Inter-Regular.ttf'),
+    [FONTS.bold]: require ('../assets/fonts/Inter-Bold.ttf'),
+    [FONTS.medium]: require ('../assets/fonts/Inter-Medium.ttf'),
+    [FONTS.light]: require ('../assets/fonts/Inter-Light.ttf'),
   })
   const categoryDefault = {
     categoryId:null,
@@ -23,8 +24,6 @@ export default function App(){
 
   const HeaderTitle  = IsCategorySelected ? 'Products' : 'Categories';
 
-
-  
   const onHandleSelectCategory = ({categoryId, color}) => {
     setIsCategorySelected(!IsCategorySelected);
     setSelectedCategory({categoryId, color});
@@ -33,6 +32,15 @@ export default function App(){
     setIsCategorySelected(!IsCategorySelected);
     setSelectedCategory(categoryDefault);
   };
+
+  if(!loaded){
+    return (
+      <View style= {styles.loaderContainer}>
+    <ActivityIndicator color= {COLORS.primary} size='large'/>
+    </View>
+    )
+  }
+
 
   return(
     <SafeAreaView style={styles.container}>
@@ -51,5 +59,11 @@ export default function App(){
     container: {
       flex: 1,
   },
+
+  loaderContainer:{
+    flex:1,
+    alignItems:'center',
+    justifyContent:'center',
+  }
 
 });
