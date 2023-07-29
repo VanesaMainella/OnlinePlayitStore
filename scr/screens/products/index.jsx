@@ -54,21 +54,26 @@ function Product ({navigation, route}) {
 
      </View>
      <FlatList
-      style= {styles.products}
-      data= {search.length > 0 ? filteredProduct : filteredProductsByCategory}
-      renderItem={({item}) => (
-      <TouchableOpacity onPress={()=> onSelectProduct({productId: item.id, name: item.name})} style={styles.productContainer}>
-       <ImageBackground source = {{uri: item.image}} style={[styles.productImage, {backgroundColor: color}]}
-       resizeMethod='resize'
-       resizeMode= "contain"
-       />
-      <View style={styles.productDetail}> 
-            <Text style= {styles.productName} numberOfLines={1} ellipsizeMode= "tail"> {item.name} </Text>
-            <Text style= {styles.productPrice}> {`${item.currency.code} ${item.price}`} </Text>
-     </View>
-
-      </TouchableOpacity>
-      )}
+        style={styles.products}
+        data={search.length > 0 ? filteredProducts : filteredProductsByCategory}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => onSelectProduct({ productId: item.id, name: item.name })}
+            style={styles.productContainer}>
+            <ImageBackground
+              source={{ uri: item.image }}
+              style={[styles.productImage, { backgroundColor: color }]}
+              resizeMethod="resize"
+              resizeMode="contain"
+            />
+      <View style={styles.productDetail}>
+              <Text style={styles.productName} numberOfLines={1} ellipsizeMode="tail">
+                {item.name}
+              </Text>
+              <Text style={styles.productPrice}>{`${item.currency.code} ${item.price}`}</Text>
+            </View>
+          </TouchableOpacity>
+        )}
       contentContainerStyle={styles.productsContent}
       keyExtractor={(item)=> item.id.toString()}
       numColumns={2}
