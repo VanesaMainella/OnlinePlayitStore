@@ -1,11 +1,17 @@
-import { FlatList, SafeAreaView, View, Text } from 'react-native';
+import { FlatList, SafeAreaView, View} from 'react-native';
 import { styles } from './styles';
 import { CategoryItem } from '../../components';
 import CATEGORIES from '../../constants/data/categories.json';
 import { beginEvent } from 'react-native/Libraries/Performance/Systrace';
+import { ORIENTATION } from '../../constants/orientation';
+import useOrientation from '../../hooks/useOrientation';
 
-function Categories({onSelectCategory}) {
-
+function Categories({navigation}) {
+  const orientation = useOrientation();
+  const onSelectCategory= ({categoryId,color}) => {
+    navigation.navigate('Products', {categoryId, color});
+  };
+  
   return (
     <SafeAreaView style={styles.container}>
     <View style={styles.container}>
@@ -13,7 +19,12 @@ function Categories({onSelectCategory}) {
       data={CATEGORIES}
       style= {styles.categoryContainer}
       contentContainerStyle={styles.listCategory}
-      renderItem={({item}) => <CategoryItem{... item} onSelectCategory={() => onSelectCategory({categoryId: item.id, color: item.backgroundColor})}/>}///recibe el objetos de cada uno de los items de ese arreglo de objetos
+      renderItem={({item}) => (<CategoryItem{... item} onSelectCategory={() => onSelectCategory({categoryId: item.id, color: item.backgroundColor})}
+      
+        style={orientation === ORIENTATION.LANDSCAPE ? styles.categoryItemLandscape : {}}
+      
+      />
+  )}///recibe el objetos de cada uno de los items de ese arreglo de objetos
       keyExtractor={(item) => item.id}
       showsVerticalScrollIndicator={false}
       />
