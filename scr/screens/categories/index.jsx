@@ -8,8 +8,8 @@ import useOrientation from '../../hooks/useOrientation';
 
 function Categories({navigation}) {
   const orientation = useOrientation();
-  const onSelectCategory= ({categoryId,color}) => {
-    navigation.navigate('Products', {categoryId, color});
+  const onSelectCategory= ({categoryId,color, name}) => {
+    navigation.navigate('Products', {categoryId, color, name});
   };
   
   return (
@@ -19,7 +19,7 @@ function Categories({navigation}) {
       data={CATEGORIES}
       style= {styles.categoryContainer}
       contentContainerStyle={styles.listCategory}
-      renderItem={({item}) => (<CategoryItem{... item} onSelectCategory={() => onSelectCategory({categoryId: item.id, color: item.backgroundColor})}
+      renderItem={({item}) => (<CategoryItem{... item} onSelectCategory={() => onSelectCategory({categoryId: item.id, color: item.backgroundColor, name: item.name})}
       
         style={orientation === ORIENTATION.LANDSCAPE ? styles.categoryItemLandscape : {}}
       
