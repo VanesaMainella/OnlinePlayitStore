@@ -47,7 +47,7 @@ function ShopNavigator(){
                 headerStyle: {
                  backgroundColor: route.params.color,
                 },
-
+                title: route.params.name,
                 headerLeft: ()=> (
                 <TouchableOpacity style= {styles.goBack} onPress={()=>navigation.goBack()}>
                   <Ionicons name="arrow-back-circle" size={30} color= "black"/>
