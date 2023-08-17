@@ -1,11 +1,18 @@
 import { View, Text, Image, TouchableOpacity} from "react-native";
 import { styles } from "./styles";
 import PRODUCTS from '../../constants/data/productos.json';
+import { useSelector, useDispatch} from "react-redux";
+import { addToCart } from "../../store/cart/cart.slice";
 
 function ProductDetail ({navigation, route}) {
+  const dispatch = useDispatch();
 const  {color, productId} = route.params;
+const products= useSelector((state)=>state.products.data);
+const product = products.find((product)=> product.id === productId);
 
-const product = PRODUCTS.find((product)=> product.id === productId);
+const OnAddToCart=()=>{
+  dispatch(addToCart(product));
+};
 
 return (
     <View style={styles.container}>
@@ -24,7 +31,11 @@ return (
             </TouchableOpacity>
           ))}
         </View>
-        
+        <View style= {styles.containerButton}>
+          <TouchableOpacity onPress={OnAddToCart} style= {styles.addToCartButton}>
+            <Text style={styles.addToCartText}>Add to cart</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

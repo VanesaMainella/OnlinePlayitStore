@@ -42,9 +42,9 @@ export default function App(){
 
   return(
     <Provider store={store}>
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
    <RootNavigator/>
-    </View>
+    </SafeAreaView>
     </Provider>
   );
   }
