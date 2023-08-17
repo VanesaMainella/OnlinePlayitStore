@@ -4,10 +4,11 @@ import { Input } from '../../components';
 import { useState } from "react";
 import { COLORS } from "../../themes";
 import{Ionicons} from '@expo/vector-icons';
-import PRODUCTS from '../../constants/data/productos.json';
+import { useSelector } from 'react-redux';
 
 function Product ({navigation, route}) {
     const {categoryId, color}= route.params;
+    const products = useSelector((state)=>state.products.data);
     const [filteredProduct, setFilteredProducts] = useState ([]);
     const [borderColor, setBorderColor] = useState (COLORS.primary);
     const [search, setSearch] = useState ('');
@@ -17,7 +18,7 @@ function Product ({navigation, route}) {
         filterBySearch(Text);
     };
     const onHandleFocus = () => {};
-    const filteredProductsByCategory = PRODUCTS.filter((Product)=> Product.categoryId == categoryId);
+    const filteredProductsByCategory = products.filter((Product)=> Product.categoryId == categoryId);
     const filterBySearch = (query) =>  {
       let updatedProductList = [...filteredProductsByCategory] ;
 

@@ -3,7 +3,8 @@ import { SafeAreaView, StyleSheet, View, ActivityIndicator} from 'react-native';
 import { FONTS, COLORS } from './themes';
 import { useFonts } from 'expo-font';
 import RootNavigator from './navigations';
-
+import {store} from './store';
+import { Provider } from 'react-redux';
 
 export default function App(){
   
@@ -40,9 +41,11 @@ export default function App(){
   }
 
   return(
-    <SafeAreaView style={styles.container}>
+    <Provider store={store}>
+    <View style={styles.container}>
    <RootNavigator/>
-    </SafeAreaView>
+    </View>
+    </Provider>
   );
   }
   const styles = StyleSheet.create({
