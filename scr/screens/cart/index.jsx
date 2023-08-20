@@ -1,4 +1,4 @@
-import { View,Text } from "react-native";
+import { View,Text, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { FlatList } from "react-native-gesture-handler";
 import {CartItem} from '../../components';
@@ -7,6 +7,7 @@ import { decreaseItemQuantity, increaseItemQuantity, removeItemFromCart } from "
 
 const Cart = () => {
     const cart = useSelector((state)=> state.cart.items);
+    const total= useSelector((state)=> state.cart.total);
 
     const dispatch = useDispatch();
     const onIncreaseCartItem = (id) => {
@@ -29,6 +30,15 @@ const Cart = () => {
         keyExtractor={(item)=> item.id.toString()}
         style={styles.listContainer}
         />
+       <View style={styles.footerContainer} >
+        <TouchableOpacity onPress={()=> null} style={styles.checkoutButton}>
+        <Text style={styles.checkoutButtonText}>Checkout</Text>
+        <View style={styles.totalContainer}>
+            <Text style={styles.totalText}>Total: </Text>
+            <Text style={styles.totalPriceText}>USD {total}</Text>
+        </View>
+        </TouchableOpacity>
+       </View>
         </View>
     );
 };
