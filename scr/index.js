@@ -13,23 +13,6 @@ export default function App() {
     [FONTS.medium]: require('../assets/fonts/Inter-Medium.ttf'),
     [FONTS.light]: require('../assets/fonts/Inter-Light.ttf'),
   });
- /// const categoryDefault = {
- ///   categoryId:null,
- ///   color: COLORS.primary,
- /// }
- //// const [IsCategorySelected, setIsCategorySelected] = useState(false);
- /// const [selectedCategory, setSelectedCategory] = useState(categoryDefault);
-
-///  const HeaderTitle  = IsCategorySelected ? 'Products' : 'Categories';
-
-////  const onHandleSelectCategory = ({categoryId, color}) => {
- ///   setIsCategorySelected(!IsCategorySelected);
- ///   setSelectedCategory({categoryId, color});
-//  };
-///  const onHandleNavigate = () => {
- ///   setIsCategorySelected(!IsCategorySelected);
-///    setSelectedCategory(categoryDefault);
-//  };
 
 if (!loaded) {
   return (
