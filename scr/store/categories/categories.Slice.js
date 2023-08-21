@@ -1,14 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+
 import CATEGORIES from '../../constants/data/categories.json';
 
-const initialState={
-    data: CATEGORIES,
+const initialState = {
+  data: CATEGORIES,
 };
 
 const categoriesSlice = createSlice({
-    name: 'categories',
-    initialState,
-    reducers:{},
+  name: 'categories',
+  initialState,
+  reducers: {},
 });
 
 export default categoriesSlice.reducer;
