@@ -1,4 +1,4 @@
-import { View, Text, Button, TouchableOpacity, FlatList, Image, ImageBackground } from "react-native";
+import { View, Text, Button, TouchableOpacity, FlatList, Image, ImageBackground, ActivityIndicator } from "react-native";
 import { styles } from "./styles";
 import { Input } from '../../components';
 import { useState } from "react";
@@ -37,6 +37,13 @@ function Product ({navigation, route}) {
     const onSelectProduct= ({productId, name }) => {
       navigation.navigate('ProductDetails', {productId, color, name });
     };
+
+    if (isLoading)
+   return (
+  <View style={styles.containerLoader}>
+    <ActivityIndicator size="large" color={COLORS.primary} />
+  </View>
+);
 
     return (
      <View style = {styles.container}>
