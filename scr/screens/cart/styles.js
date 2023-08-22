@@ -8,6 +8,18 @@ export const styles = StyleSheet.create({
        flex:1,
     },
 
+    emptyCartContainer:{
+       flex:1,
+       justifyContent: 'center',
+       alignItems:'center',
+    },
+
+    emptyCartText:{
+      fontFamily: FONTS.regular,
+      fontSize:16,
+
+    },
+
     listContainer:{
        flex:1,
        backgroundColor: COLORS.white,

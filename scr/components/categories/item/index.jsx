@@ -16,7 +16,7 @@ const CategoryItem = ({ id, name, backgroundColor, backgroundImage, onSelectCate
       underlayColor={COLORS.primary}>
       <ImageBackground
         source={{ uri: backgroundImage }}
-        style={[styles.ImageBackground, style]}
+        style={[styles.imageBackground, style]}
         resizeMode="cover">
         <Text style={styles.categoryName}>{name}</Text>
       </ImageBackground>

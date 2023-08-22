@@ -24,13 +24,13 @@ const CartItem = ({id, categoryId, name, price, image, currency, quantity, stock
          <Text style={styles.decreaseButtonText}>-</Text>
          </TouchableOpacity>
          <TouchableOpacity onPress={()=>onRemoveCartItem(id)} style={styles.deleteButton}>
-        <Ionicons name= 'trash' size={22} color= {COLORS.white}/>
+        <Ionicons name= 'trash' size={14} color= {COLORS.white}/>
     </TouchableOpacity>
     </View>
     </View>
    </View> 
 
-    )
+    );
 };
 
 export default CartItem;
