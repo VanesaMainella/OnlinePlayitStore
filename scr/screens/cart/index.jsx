@@ -3,10 +3,10 @@ import { styles } from "./styles";
 import { FlatList } from "react-native-gesture-handler";
 import {CartItem} from '../../components';
 import { useDispatch, useSelector } from "react-redux";
-import { decreaseItemQuantity, increaseItemQuantity, removeItemFromCart } from "../../store/cart/cart.slice";
-import { useCreateOrderMutation } from "../../store/orders/api";
+import { clearCart, decreaseItemQuantity, increaseItemQuantity, removeItemFromCart } from "../../store/cart/cart.slice";
+import { ordersApi, useCreateOrderMutation } from "../../store/orders/api";
 
-const Cart = ({}) => {
+const Cart = ({navigation}) => {
     const cart = useSelector((state)=> state.cart.items);
     const total= useSelector((state)=> state.cart.total);
 
@@ -46,10 +46,16 @@ const Cart = ({}) => {
            method: 'UPS',
            trackingNumber: Math.floor(Math.random()*1000),
         },
+
+        createAt: new Date.now(),
+        finishedAt: "",
     };
 
     try {
-     await  createOrder(newOrder);}
+     await  createOrder(newOrder);
+     dispatch(clearCart());
+     navigation.navigate('Orders');
+    }
      catch (e){
         console.warn({error, e});
      }
