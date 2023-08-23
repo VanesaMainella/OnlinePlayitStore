@@ -18,11 +18,13 @@ export const ordersApi = createApi({
 
         getOrders: builder.query({
             query:() => '/orders.json',
-            transformResponse: (response) =>
-            Object?.keys(response)?.map((key)=> ({
+            transformResponse: (response) =>{
+                if(!response) return [];
+            return Object?.keys(response)?.map((key)=> ({
                 id: key,
                 ... response[key],
-            })),          
+            }));
+        },    
              providesTags:['Orders'],
         }),
     }),
