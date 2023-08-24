@@ -1,68 +1,85 @@
-import { View, Text, Button, TouchableOpacity, FlatList, Image, ImageBackground, ActivityIndicator } from "react-native";
-import { styles } from "./styles";
-import { Input } from '../../components';
-import { useState } from "react";
-import { COLORS } from "../../themes";
-import{Ionicons} from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { useState } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  ImageBackground,
+  ActivityIndicator,
+} from 'react-native';
 import { useSelector } from 'react-redux';
-import { useGetProductsByCategoryQuery } from "../../store/products/api";
 
-function Product ({navigation, route}) {
-    const {categoryId, color}= route.params;
-    const {data, error, isLoading}= useGetProductsByCategoryQuery(categoryId);
-    const [filteredProduct, setFilteredProducts] = useState ([]);
-    const [borderColor, setBorderColor] = useState (COLORS.primary);
-    const [search, setSearch] = useState ('');
-    const onHandleBlur = () => {};
-    const onHandleChangeText = (Text) => {
-        setSearch(Text);
-        filterBySearch(Text);
-    };
-    const onHandleFocus = () => {};
-    const filteredProductsByCategory = data?.filter((Product)=> Product.categoryId == categoryId);
-    const filterBySearch = (query) =>  {
-      let updatedProductList = [...filteredProductsByCategory] ;
+import { styles } from './styles';
+import { Input } from '../../components';
+import { useGetProductsByCategoryQuery } from '../../store/products/api';
+import { COLORS } from '../../themes';
 
-      updatedProductList = updatedProductList.filter((Product) => {
-        return Product.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
-      });
-      setFilteredProducts(updatedProductList);
-    };
-    
-    const clearSearch = () => {
-      setSearch('');
-      setFilteredProducts([]);
-    };
-    
-    const onSelectProduct= ({productId, name }) => {
-      navigation.navigate('ProductDetails', {productId, color, name });
-    };
+function Product({ navigation, route }) {
+  const { categoryId, color } = route.params;
+  const { data, error, isLoading } = useGetProductsByCategoryQuery(categoryId);
 
-    if (isLoading)
-   return (
-  <View style={styles.containerLoader}>
-    <ActivityIndicator size="large" color={COLORS.primary} />
-  </View>
-);
+  console.warn({ data });
+  const [search, setSearch] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [borderColor, setBorderColor] = useState(COLORS.primary);
+  const onHandleBlur = () => {};
+  const onHandleChangeText = (text) => {
+    setSearch(text);
+    filterBySearch(text);
+  };
+  const onHandleFocus = () => {};
 
+  const filteredProductsByCategory = data?.filter((product) => product.categoryId === categoryId);
+
+  const filterBySearch = (query) => {
+    let updatedProductList = [...filteredProductsByCategory];
+
+    updatedProductList = updatedProductList.filter((product) => {
+      return product.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+    });
+
+    setFilteredProducts(updatedProductList);
+  };
+
+  const clearSearch = () => {
+    setSearch('');
+    setFilteredProducts([]);
+  };
+
+  const onSelectProduct = ({ productId, name }) => {
+    navigation.navigate('ProductDetail', { productId, color, name });
+  };
+
+  if (isLoading)
     return (
-     <View style = {styles.container}>
-     <View style={styles.header} >
-      <Input
-       onHandleBlur={onHandleBlur}
-       onHandleChangeText={onHandleChangeText}
-       onHandleFocus={onHandleFocus}
-       value={search}
-       placeholder="Search"
-       borderColor={borderColor}
-       />
-      
-     {search.length > 0 && (
-     <Ionicons style= {styles.clearIcon} onPress={clearSearch} name= "close-circle" size={20} color= "black"/>
-     )}
+      <View style={styles.containerLoader}>
+        <ActivityIndicator size="large" color={COLORS.primary} />
+      </View>
+    );
 
-     </View>
-     <FlatList
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Input
+          onHandleBlur={onHandleBlur}
+          onHandleChangeText={onHandleChangeText}
+          onHandleFocus={onHandleFocus}
+          value={search}
+          placeholder="Search"
+          borderColor={borderColor}
+        />
+        {search.length > 0 && (
+          <Ionicons
+            style={styles.clearIcon}
+            onPress={clearSearch}
+            name="close-circle"
+            size={20}
+            color={COLORS.black}
+          />
+        )}
+      </View>
+      <FlatList
         style={styles.products}
         data={search.length > 0 ? filteredProducts : filteredProductsByCategory}
         renderItem={({ item }) => (
@@ -75,7 +92,7 @@ function Product ({navigation, route}) {
               resizeMethod="resize"
               resizeMode="contain"
             />
-      <View style={styles.productDetail}>
+            <View style={styles.productDetail}>
               <Text style={styles.productName} numberOfLines={1} ellipsizeMode="tail">
                 {item.name}
               </Text>
@@ -83,20 +100,18 @@ function Product ({navigation, route}) {
             </View>
           </TouchableOpacity>
         )}
-      contentContainerStyle={styles.productsContent}
-      keyExtractor={(item)=> item.id.toString()}
-      numColumns={2}
-      showsVerticalScrollIndicator={false}
-     />
-
-     {filteredProduct.length == 0 && search.length > 0 &&(
-      <View style= {styles.notFound}>
-        <Text style={styles.notFoundText}>No products found</Text>
+        contentContainerStyle={styles.productsContent}
+        keyExtractor={(item) => item.id.toString()}
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
+      />
+      {filteredProducts.length === 0 && search.length > 0 && (
+        <View style={styles.notFound}>
+          <Text style={styles.notFoundText}>No products found</Text>
         </View>
-     )}
-     </View>
+      )}
+    </View>
+  );
+}
 
-    );
-
-    }
 export default Product;

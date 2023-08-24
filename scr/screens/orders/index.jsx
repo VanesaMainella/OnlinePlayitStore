@@ -1,26 +1,21 @@
-import { View,Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from 'react-native';
+import { FlatList } from 'react-native';
 
-import { styles } from "./styles";
-import { useGetOrdersQuery } from "../../store/orders/api";
-import { FlatList } from "react-native-gesture-handler";
-import { OrderItem } from "../../components";
+import { styles } from './styles';
+import { OrderItem } from '../../components';
+import { useGetOrdersQuery } from '../../store/orders/api';
 
 const Orders = () => {
-    const {data, error, isLoading}= useGetOrdersQuery();
+  const { data, error, isLoading } = useGetOrdersQuery();
 
-    const renderItem= ({item}) => <OrderItem {...item}/>;
-    const keyExtractor = (item) => item.id.toString();
+  const renderItem = ({ item }) => <OrderItem {...item} />;
 
-    return (
-        <View style={styles.container}>
-
-        <FlatList
-        data={data} 
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        />
-        </View>
-    );
+  const keyExtractor = (item) => item.id.toString();
+  return (
+    <View style={styles.container}>
+      <FlatList data={data} renderItem={renderItem} keyExtractor={keyExtractor} />
+    </View>
+  );
 };
 
 export default Orders;

@@ -1,31 +1,30 @@
-import { View, Text, Image, TouchableOpacity, ActivityIndicator} from "react-native";
-import { styles } from "./styles";
-import PRODUCTS from '../../constants/data/productos.json';
-import { useSelector, useDispatch} from "react-redux";
-import { addToCart } from "../../store/cart/cart.slice";
-import { useGetProductsByIdQuery } from "../../store/products/api";
+import { View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 
-function ProductDetail ({navigation, route}) {
+import { styles } from './styles';
+import { addToCart } from '../../store/cart/cart.slice';
+import { useGetProductByIdQuery } from '../../store/products/api';
+import { COLORS } from '../../themes';
+
+function ProductDetail({ navigation, route }) {
   const dispatch = useDispatch();
-const  {color, productId} = route.params;
+  const { color, productId } = route.params;
+  const { data, isLoading, error } = useGetProductByIdQuery(productId);
 
-const {data, isLoading, error} = useGetProductsByIdQuery(productId);
+  const product = data?.find((product) => product.id === productId);
 
-const product = data?.find((product)=> product.id == productId);
+  const onAddToCart = () => {
+    dispatch(addToCart(product));
+  };
 
-const OnAddToCart=()=>{
-  dispatch(addToCart(product));
-};
+  if (isLoading)
+    return (
+      <View style={styles.containerLoader}>
+        <ActivityIndicator size="large" color={COLORS.primary} />
+      </View>
+    );
 
-
-if (isLoading)
-return (
-  <View style={styles.containerLoader}>
-    <ActivityIndicator size="large" color={COLORS.primary} />
-  </View>
-);
-
-return (
+  return (
     <View style={styles.container}>
       <View style={[styles.containerImage, { backgroundColor: color }]}>
         <Image source={{ uri: product.image }} style={styles.image} resizeMode="contain" />
@@ -42,8 +41,8 @@ return (
             </TouchableOpacity>
           ))}
         </View>
-        <View style= {styles.containerButton}>
-          <TouchableOpacity onPress={OnAddToCart} style= {styles.addToCartButton}>
+        <View style={styles.containerButton}>
+          <TouchableOpacity onPress={onAddToCart} style={styles.addToCartButton}>
             <Text style={styles.addToCartText}>Add to cart</Text>
           </TouchableOpacity>
         </View>
