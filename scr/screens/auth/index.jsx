@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { styles } from "./styles";
 import {View, Text, TouchableOpacity} from "react-native";
-import { TextInput } from "react-native-gesture-handler";
+import { TextInput } from "react-native";
 import { COLORS } from '../../themes';
 import { useSignInMutation, useSignUpMutation } from "../../store/auth/api";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/auth/auth.slice";
 
 const Auth = () => {
+  const dispatch = useDispatch();
     const [isLogin, setIsLogin] = useState (true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState ('');
@@ -13,9 +16,10 @@ const Auth = () => {
     const buttonTitle = isLogin ? "Login" : "Register";
     const messageText = isLogin ? "Need an account?" : "Already have an account?";
 
-    const [singIn] = useSignInMutation();
+    const [singIn, {data}] = useSignInMutation();
 
     const [singUp] = useSignUpMutation();
+
 
     const onHandlerAuth = async () => {
       try {
@@ -26,7 +30,13 @@ const Auth = () => {
         }
       } catch (error){
         console.error(error);
-      }
+      } 
+
+      useEffect(()=>{
+        if (data) {
+          dispatch(setUser(data));
+        }
+      }, [data]);
   
     };
 
@@ -55,7 +65,7 @@ const Auth = () => {
                       />
                       <View style={styles.linkContainer}>
                         <TouchableOpacity style={styles.link} onPress={()=> setIsLogin (!isLogin)}>
-                            <Text style={styles.linkText}>messageText</Text>
+                            <Text style={styles.linkText}>{messageText}</Text>
                         </TouchableOpacity>
                       </View>
                       <View style={styles.buttonContainer}>
