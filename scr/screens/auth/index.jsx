@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 import { styles } from "./styles";
 import {View, Text, TouchableOpacity} from "react-native";
 import { TextInput } from "react-native";
@@ -9,37 +9,30 @@ import { setUser } from "../../store/auth/auth.slice";
 
 const Auth = () => {
   const dispatch = useDispatch();
-    const [isLogin, setIsLogin] = useState (true);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState ('');
-    const headerTitle = isLogin ? "Login" : "Register";
-    const buttonTitle = isLogin ? "Login" : "Register";
-    const messageText = isLogin ? "Need an account?" : "Already have an account?";
+  const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail]= useState('');
+  const [password, setPassword]= useState('');
 
-    const [singIn, {data}] = useSignInMutation();
+  const headerTitle = isLogin ? 'Login' : 'Register';
+  const buttonTitle = isLogin ? 'Login' : 'Register';
+  const messageText = isLogin ? 'Need an account?' : 'Already have an account?';
 
-    const [singUp] = useSignUpMutation();
+  const [signIn, { data }] = useSignInMutation();
 
+  const [signUp] = useSignUpMutation();
 
-    const onHandlerAuth = async () => {
-      try {
-        if (isLogin) {
-         await singIn({email,password});
-        } else{
-         await singUp({email,password});
-        }
-      } catch (error){
-        console.error(error);
-      } 
-
-      useEffect(()=>{
-        if (data) {
-          dispatch(setUser(data));
-        }
-      }, [data]);
-  
-    };
-
+  const onHandlerAuth = async () => {
+    try {
+      if (isLogin) {
+        const result = await signIn({email, password});
+        if (result?.data) dispatch(setUser(result.data));
+      } else {
+        await signUp({ email, password});
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
         return (
         <View style = {styles.container}>
            <View style={styles.content}>
@@ -76,6 +69,6 @@ const Auth = () => {
            </View>
         </View>
     );
-};
 
+        };
 export default Auth;

@@ -3,14 +3,15 @@ import { Categories, Products, ProductDetails } from "../screens";
 import { COLORS, FONTS } from "../themes";
 import { TouchableOpacity, StyleSheet, Text, animation} from "react-native";
 import {Ionicons} from '@expo/vector-icons';
+import SettingsNavigator from "./settings";
 
 const Stack = createNativeStackNavigator();
 
 function ShopNavigator(){
 
     return (
-        <Stack.Navigator initialRouteName="Categories" screenOptions={{
-            presentation:'modal',
+        <Stack.Navigator initialRouteName="Categories" 
+        screenOptions={({navigation})=> ({
             headerStyle:{
                 backgroundColor: COLORS.primary,
                 height:80,
@@ -22,7 +23,12 @@ function ShopNavigator(){
             },
             headerTintColor: COLORS.black,
             animation:'fade_from_bottom',
-        }}>
+            headerRight: () => (
+                <TouchableOpacity style={styles.icon} onPress={()=> navigation.navigate('SettingsStack')}>
+                    <Ionicons name= "settings-outline" size={24} color= {COLORS.white}/>
+                </TouchableOpacity>
+            ),
+        })}>
 
             <Stack.Screen name="Categories" 
             component={Categories} />
@@ -47,14 +53,27 @@ function ShopNavigator(){
                 headerStyle: {
                  backgroundColor: route.params.color,
                 },
-                title: route.params.name,
                 headerLeft: ()=> (
                 <TouchableOpacity style= {styles.goBack} onPress={()=>navigation.goBack()}>
                   <Ionicons name="arrow-back-circle" size={30} color= "black"/>
                 </TouchableOpacity>
             ),
+            title: route.params.name,
                
             })}/>
+            <Stack.Screen
+            name= 'SettingsStack'
+            component={SettingsNavigator}
+            options ={({navigation, route})=> ({ 
+                headerLeft: ()=> (
+                <TouchableOpacity style= {styles.goBack} onPress={()=>navigation.goBack()}>
+                  <Ionicons name="arrow-back-circle" size={30} color= "black"/>
+                </TouchableOpacity>
+            ),
+            title: 'Settings',
+            headerRight:null,
+            })}
+            />
 
         </Stack.Navigator>
     );
