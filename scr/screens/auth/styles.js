@@ -10,17 +10,18 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+ 
   imageBackground: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+ 
   },
   content: {
     width: '80%',
     maxWidth: 400,
     padding: 15,
     margin: 15,
-    minHeight: 300,
     backgroundColor: COLORS.background,
     borderWidth: 1,
     borderColor: COLORS.primary,
@@ -38,7 +39,7 @@ export const styles = StyleSheet.create({
     fontFamily: FONTS.bold,
     fontSize: 22,
     textAlign: 'center',
-    color: COLORS.text,
+    color: COLORS.black,
     paddingVertical: 10,
   },
   linkContainer: {
@@ -46,12 +47,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
   },
-  link: {},
+ 
   linkText: {
     fontFamily: FONTS.medium,
     fontSize: 14,
     textAlign: 'center',
-    color: COLORS.white,
+    color: COLORS.black,
   },
   buttonContainer: {
     justifyContent: 'center',
