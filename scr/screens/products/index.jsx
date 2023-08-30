@@ -15,7 +15,7 @@ import { Input } from '../../components';
 import { useGetProductsByCategoryQuery } from '../../store/products/api';
 import { COLORS } from '../../themes';
 
-function Product({ navigation, route }) {
+function Products({ navigation, route }) {
   const { categoryId, color } = route.params;
   const { data, error, isLoading } = useGetProductsByCategoryQuery(categoryId);
 
@@ -114,4 +114,4 @@ function Product({ navigation, route }) {
   );
 }
 
-export default Product;
+export default Products;

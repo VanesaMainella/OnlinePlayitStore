@@ -13,7 +13,7 @@ function Categories({ navigation }) {
 
   const orientation = useOrientation();
   const onSelectCategory = ({ categoryId, color, name }) => {
-    navigation.navigate('Products', { categoryId, color, name });
+    navigation.navigate('Product', { categoryId, color, name });
   };
 
   if (isLoading)

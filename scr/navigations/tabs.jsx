@@ -49,7 +49,7 @@ const TabsNavigator = () => {
           ),
           tabBarBadge: cartItems.length,
           tabBarBadgeStyle: {
-            backgroundColor: COLORS.secodary,
+            backgroundColor: COLORS.secondary,
             color: COLORS.white,
             fontFamily: FONTS.regular,
             fontSize: 11,
