@@ -6,5 +6,6 @@ export const COLORS = {
     black:"#000000",
     white:"#FFFFFF",
     gray:"#343a40",
+    error:"#E23428",
     
 }

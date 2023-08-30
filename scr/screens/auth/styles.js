@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
     maxWidth: 400,
     padding: 15,
     margin: 15,
+    minHeight: 345,
     backgroundColor: COLORS.background,
     borderWidth: 1,
     borderColor: COLORS.primary,
