@@ -4,6 +4,7 @@ import { styles } from './styles';
 import { useState } from 'react';
 import {COLORS} from '../../themes';
 import MapPreview from '../map-preview';
+
 const LocationSelector =({onLocation})=> {
 
     const [pickedLocation, setPickedLocation]= useState(null);
