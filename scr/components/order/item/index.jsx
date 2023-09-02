@@ -1,6 +1,6 @@
 import { TouchableOpacity, Text, View } from 'react-native';
 
-import { styles } from '../styles';
+import { styles } from './styles';
 
 const formatDate = (time) => {
   const date = new Date(time);
@@ -16,7 +16,7 @@ const OrderItem = ({ id, total, createAt, items }) => {
       <View style={styles.orderBody}>
         <Text style={styles.orderItemId}>Id: {id}</Text>
         <Text style={styles.orderItemTotal}>USD {total}</Text>
-        {<Text style={styles.orderItemId}>Total Items: {items.length}</Text> }
+        {/* <Text style={styles.orderItemId}>Total Items: {items.length}</Text> */}
       </View>
     </TouchableOpacity>
   );

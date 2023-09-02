@@ -10,20 +10,18 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
- 
   imageBackground: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
- 
+    justifyContent: 'center',
   },
   content: {
     width: '80%',
     maxWidth: 400,
     padding: 15,
     margin: 15,
-    minHeight: 345,
-    backgroundColor: COLORS.background,
+    minHeight: 300,
+    backgroundColor: COLORS.white,
     borderWidth: 1,
     borderColor: COLORS.primary,
     shadowColor: '#000',
@@ -48,7 +46,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
   },
- 
+  link: {},
   linkText: {
     fontFamily: FONTS.medium,
     fontSize: 14,
@@ -69,7 +67,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
   },
   buttonDisabled: {
-    backgroundColor: COLORS.black,
+    backgroundColor: COLORS.secondary,
     width: 200,
     height: 35,
     justifyContent: 'center',
@@ -80,6 +78,6 @@ export const styles = StyleSheet.create({
     fontFamily: FONTS.bold,
     fontSize: 14,
     textAlign: 'center',
-    color: COLORS.white,
+    color: COLORS.black,
   },
 });

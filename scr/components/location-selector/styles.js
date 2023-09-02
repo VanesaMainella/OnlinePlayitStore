@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     height: 220,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: COLORS.black,
+    borderColor: COLORS.white,
     borderWidth: 1,
     marginVertical: 15,
   },
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     fontFamily: FONTS.medium,
   },
   location: {
-    color: COLORS.black,
+    color: COLORS.white,
     fontSize: 14,
     fontFamily: FONTS.bold,
   },
