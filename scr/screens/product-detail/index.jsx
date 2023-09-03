@@ -26,7 +26,7 @@ function ProductDetail({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.containerImage, { backgroundColor: color }]}>
+      <View style={[styles.containerImage, { backgroundColor: COLORS.white}]}>
         <Image source={{ uri: product.image }} style={styles.image} resizeMode="contain" />
       </View>
       <View style={styles.content}>
@@ -36,7 +36,7 @@ function ProductDetail({ navigation, route }) {
         <Text style={styles.tagTitle}>Tags</Text>
         <View style={styles.containerTags}>
           {product.tags.map((tag) => (
-            <TouchableOpacity key={tag} style={[styles.containerTag, { backgroundColor: color }]}>
+            <TouchableOpacity key={tag} style={[styles.containerTag, { backgroundColor: COLORS.gray }]}>
               <Text style={styles.tag}>{tag}</Text>
             </TouchableOpacity>
           ))}

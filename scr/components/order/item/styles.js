@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
   orderItemDate: {
     fontFamily: FONTS.medium,
     fontSize: 14,
-    color: COLORS.text,
+    color: COLORS.black,
   },
   orderBody: {
     flex: 1,
@@ -39,11 +39,11 @@ export const styles = StyleSheet.create({
   orderItemTotal: {
     fontFamily: FONTS.bold,
     fontSize: 14,
-    color: COLORS.text,
+    color: COLORS.black,
   },
   orderItemId: {
     fontFamily: FONTS.regular,
     fontSize: 14,
-    color: COLORS.text,
+    color: COLORS.black,
   },
 });

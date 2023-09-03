@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
     gap: 5,
   },
   productName: {
-    fontSize: 14,
+    fontSize: 16,
   },
   productPrice: {
     fontSize: 15,

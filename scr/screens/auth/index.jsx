@@ -73,7 +73,7 @@ const Auth = () => {
       <View style={styles.container}>
         <ImageBackground
           source={{
-            uri: 'https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1007&q=80',
+            uri: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80',
           }}
           style={styles.imageBackground}
           resizeMode="cover">
@@ -81,7 +81,7 @@ const Auth = () => {
           <View style={styles.content}>
             <InputForm
               placeholder="email@domain.com"
-              placeholderTextColor={COLORS.gray}
+              placeholderTextColor={COLORS.black}
               autoCapitalize="none"
               autoCorrect={false}
               onChangeText={(text) => onHandlerInputChange({ value: text, name: 'email' })}
@@ -94,7 +94,7 @@ const Auth = () => {
             <InputForm
               style={styles.input}
               placeholder="*********"
-              placeholderTextColor={COLORS.gray}
+              placeholderTextColor={COLORS.black}
               autoCapitalize="none"
               autoCorrect={false}
               secureTextEntry

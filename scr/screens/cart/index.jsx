@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';

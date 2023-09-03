@@ -17,7 +17,7 @@ function ShopNavigator() {
       screenOptions={({ navigation }) => ({
         headerStyle: {
           backgroundColor: COLORS.primary,
-          height: 80,
+          height: 100,
         },
         headerTitleStyle: {
           fontFamily: FONTS.bold,
@@ -44,7 +44,7 @@ function ShopNavigator() {
         component={Products}
         options={({ navigation, route }) => ({
           headerStyle: {
-            backgroundColor: route.params.color,
+            backgroundColor: COLORS.primary,
           },
           headerLeft: () => (
             <TouchableOpacity style={styles.goBack} onPress={() => navigation.goBack()}>
@@ -59,7 +59,7 @@ function ShopNavigator() {
         component={ProductDetail}
         options={({ navigation, route }) => ({
           headerStyle: {
-            backgroundColor: route.params.color,
+            backgroundColor: COLORS.primary,
           },
           headerLeft: () => (
             <TouchableOpacity style={styles.goBack} onPress={() => navigation.goBack()}>

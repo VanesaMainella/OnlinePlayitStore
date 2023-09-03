@@ -5,7 +5,7 @@ export const COLORS = {
     background:"#edafb8",
     black:"#000000",
     white:"#FFFFFF",
-    gray:"#343a40",
+    gray:"#b1a7a6",
     error:"#E23428",
     
 }

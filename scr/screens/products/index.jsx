@@ -88,7 +88,7 @@ function Product({ navigation, route }) {
             style={styles.productContainer}>
             <ImageBackground
               source={{ uri: item.image }}
-              style={[styles.productImage, { backgroundColor: color }]}
+              style={[styles.productImage, { backgroundColor: COLORS.white }]}
               resizeMethod="resize"
               resizeMode="contain"
             />

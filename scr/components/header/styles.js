@@ -19,7 +19,7 @@ export const styles=StyleSheet.create({
          },
 
     title: {
-        fontSize:25,
+        fontSize:30,
         color: COLORS.text,
         fontFamily: FONTS.bold,
 

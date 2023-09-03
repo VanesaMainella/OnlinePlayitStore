@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
   },
   tag: {
-    color: COLORS.white,
+    color: COLORS.black,
   },
   containerButton: {
     marginVertical: 10,

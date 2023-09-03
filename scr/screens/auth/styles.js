@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     minHeight: 300,
     backgroundColor: COLORS.white,
     borderWidth: 1,
-    borderColor: COLORS.primary,
+    borderColor: COLORS.gray,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   button: {
-    backgroundColor: COLORS.secondary,
+    backgroundColor: COLORS.gray,
     width: 200,
     height: 35,
     justifyContent: 'center',
@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
   },
   buttonDisabled: {
-    backgroundColor: COLORS.secondary,
+    backgroundColor: COLORS.gray,
     width: 200,
     height: 35,
     justifyContent: 'center',
